@@ -2,7 +2,7 @@
 
 version_pat='s/^tmux[^0-9]*([.0-9]+).*/\1/p'
 
-is_vim="scripts/is_vim.bash '#{pane_tty}'"
+is_vim="is_vim.bash '#{pane_tty}'"
 
 tmux bind-key -n C-h if-shell "$is_vim" "send-keys C-h" "select-pane -L"
 tmux bind-key -n C-j if-shell "$is_vim" "send-keys C-j" "select-pane -D"
