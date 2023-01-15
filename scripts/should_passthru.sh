@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # see https://github.com/christoomey/vim-tmux-navigator/issues/295#issuecomment-922092511
-# Usage: is_vim.sh <tty>
-#   tty: Specify tty to check for vim process.
+# Usage: should_passthru.sh <tty>
+#   tty: Specify tty to check if the current process should receive input combo directly
 tty=$1
 
 # Construct process tree.
@@ -18,6 +18,6 @@ while ((${#pids[@]} > idx)); do
   pids+=(${children[pid]-})
 done
 
-# Check whether any child pids are vim
-ps -o state= -o comm= -p "${pids[@]}" | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'
+# Check child processes
+ps -o state= -o comm= -p "${pids[@]}" | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?|fzf)(diff)?$'
 exit $?
