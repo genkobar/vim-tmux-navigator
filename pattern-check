@@ -13,7 +13,7 @@ NORMAL=$(tput sgr0)
 
 vim_pattern='(^|\/)g?(view|n?vim?x?)(diff)?$'
 match_tests=(vim Vim VIM vimdiff /usr/local/bin/vim vi gvim view gview nvim vimx)
-no_match_tests=( /Users/christoomey/.vim/thing /usr/local/bin/start-vim )
+no_match_tests=(/Users/christoomey/.vim/thing /usr/local/bin/start-vim)
 
 display_matches() {
   for process_name in "$@"; do
